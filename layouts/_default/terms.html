@@ -17,8 +17,9 @@
         {{ end }}
       </div>
     </div>
-    {{ else if (eq .Type "categories")}}
+    {{ else }}
       <div id="categories">
+        <h1>{{ .Page.Title }}</h1>
         {{ if (eq (len .Data.Terms) 0) }}
         <div class="category-list-title">
           No categories
