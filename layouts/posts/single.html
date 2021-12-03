@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
 {{ partial "head.html" . }}
-<body class="max-width mx-auto px3 ltr">
+<body class="max-width px3 ltr">
   <div class="content index py4">
 
   {{ partial "page_nav.html" . }}
@@ -28,6 +28,10 @@
           <time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time>
           {{ if (and .Site.Params.show_updated (ne .Lastmod .Date)) }}
             (Updated: <time datetime="{{ .Lastmod }}" itemprop="dateModified">{{ .Lastmod.Format $dataFormat }}</time>)
+          {{ end }}
+          {{if .Params.time }}
+            <i class="far fa-clock"></i>
+            Cooking Time: {{ .Params.time }}
           {{ end }}
         </div>
         {{ $showReadTime := .Site.Params.showReadTime | default false }}
@@ -88,7 +92,7 @@
 </body>
 
 <link rel="stylesheet" href={{ "/lib/font-awesome/css/all.min.css" | relURL }}>
-<script src={{ "/lib/jquery/jquery.min.js" | relURL }}></script>
+<script src={{ "/js/cash.min.js" | relURL }}></script>
 <script src={{ "/js/main.js" | relURL }}></script>
 {{ if not (isset site.Params "disablecopy") }}
 <script src={{ "js/code-copy.js"  | relURL }}></script>
