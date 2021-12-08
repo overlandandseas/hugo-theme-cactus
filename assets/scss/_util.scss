@@ -8,6 +8,10 @@
 .inline-block {
   display: inline-block;
 }
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
 .table {
   display: table;
 }
@@ -319,4 +323,7 @@
 }
 .capitalize {
   text-transform: capitalize;
+}
+.lowercase {
+  text-transform: lowercase;
 }

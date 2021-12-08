@@ -1,25 +1,29 @@
 {{ define "main" }}
+<a class="icon" href="{{ .File.Dir | relLangURL }}">../</a>
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <div class="content" itemprop="articleBody">
     {{ if (eq .Type "tags")}}
-    <div id="tag-cloud">
+    <div id="categories">
+      <h1 class="mt0 lowercase">{{ .Page.Title }}/</h1>
       {{ if (eq (len .Data.Terms) 0) }}
-      <div class="tag-cloud-title">
-        No tags
+      <div class="category-list-title">
+        No categories
       </div>
       {{ end }}
-      <div class="tag-cloud-tags">
-        {{ $AllRegularPagesCount := len .Site.RegularPages }}
-        {{ range $elem := .Data.Terms.Alphabetical }}
-        <a style="font-size: {{ (add 0.8 (mul 15 (div (float $elem.Count) $AllRegularPagesCount))) }}rem;" href="{{ $elem.Page.Permalink }}">
-          {{- .Page.Title -}}
-        </a>
-        {{ end }}
+      <div class="category-list">
+        <ul class="category-list">
+          {{ range .Data.Terms.ByCount }}
+          <li class="category-list-item">
+            <a class="category-list-link" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+            <span class="category-list-count">{{ .Count }}</span>
+          </li>
+          {{ end }}
+        </ul>
       </div>
     </div>
     {{ else }}
       <div id="categories">
-        <h1>{{ .Page.Title }}</h1>
+        <h1 class="mt0 lowercase">{{ .Page.Title }}/</h1>
         {{ if (eq (len .Data.Terms) 0) }}
         <div class="category-list-title">
           No categories
