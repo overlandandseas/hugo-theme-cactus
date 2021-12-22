@@ -1,2 +1,8 @@
 <!-- TODO -->
 <link rel="icon" type="image/png" href="{{ "images/favicon.ico"  | absURL }}" />
+
+{{ if (isset .Site.Params "icon") }}
+  <link rel="icon" type="image/png" href="{{ .Site.Params.icon | absURL }}" />
+{{ else }}
+  <link rel="icon" type="image/png" href="{{ "images/favicon.ico"  | absURL }}" />
+{{ end}}
