@@ -1,7 +1,9 @@
 {{ define "main"}}
 <div id="archive">
   <a class="icon" href="{{ .Data.Plural | relLangURL }}">../</a>
-  <h1 class="mt0 lowercase">{{ .Title }}/</h1>
+  <h1 class="mt0 lowercase">
+    {{ if .Data.Plural }}<span class="o-40">{{ .Data.Plural }}/</span>{{ end }}{{ .Title }}/
+  </h1>
   <ul class="post-list">
   {{ $pages := .Paginator.Pages }}
   {{ if .Site.Params.showAllPostsArchive }}
